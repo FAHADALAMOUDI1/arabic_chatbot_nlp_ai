@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NLP AI Chatbot - مساعد الذكاء الاصطناعي العربي</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <div class="logo-icon">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <div class="logo-text">
+                        <h1>NLP AI</h1>
+                        <span>Chatbot</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="sidebar-nav">
+                <button class="nav-btn active" data-tab="chat">
+                    <i class="fas fa-comments"></i>
+                    <span>المحادثة</span>
+                </button>
+                <button class="nav-btn" data-tab="api">
+                    <i class="fas fa-code"></i>
+                    <span>API</span>
+                </button>
+                <button class="nav-btn" data-tab="stats">
+                    <i class="fas fa-chart-bar"></i>
+                    <span>الإحصائيات</span>
+                </button>
+                <button class="nav-btn" data-tab="about">
+                    <i class="fas fa-info-circle"></i>
+                    <span>عن النظام</span>
+                </button>
+            </div>
+
+            <div class="sidebar-footer">
+                <div class="status-indicator">
+                    <span class="status-dot online"></span>
+                    <span class="status-text">متصل</span>
+                </div>
+                <p class="version">v2.0.0</p>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Chat Tab -->
+            <div class="tab-content active" id="chat-tab">
+                <div class="chat-header">
+                    <div class="chat-title">
+                        <i class="fas fa-robot"></i>
+                        <div>
+                            <h2>مساعد NLP AI</h2>
+                            <span class="subtitle">ذكاء اصطناعي متقدم للغة العربية</span>
+                        </div>
+                    </div>
+                    <div class="chat-actions">
+                        <button class="action-btn" id="clear-chat" title="مسح المحادثة">
+                            <i class="fas fa-trash-alt"></i>
+                        </button>
+                        <button class="action-btn" id="export-chat" title="تصدير المحادثة">
+                            <i class="fas fa-download"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="chat-messages" id="chat-messages">
+                    <div class="welcome-message">
+                        <div class="welcome-icon">
+                            <i class="fas fa-robot"></i>
+                        </div>
+                        <h3>مرحباً بك في NLP AI Chatbot! 🎉</h3>
+                        <p>أنا مساعد ذكاء اصطناعي متخصص في اللغة العربية. يمكنني مساعدتك في:</p>
+                        <div class="quick-actions">
+                            <button class="quick-btn" data-message="مرحبا">
+                                <i class="fas fa-hand-wave"></i>
+                                <span>تحية</span>
+                            </button>
+                            <button class="quick-btn" data-message="ما هي قدراتك؟">
+                                <i class="fas fa-bolt"></i>
+                                <span>القدرات</span>
+                            </button>
+                            <button class="quick-btn" data-message="ساعدني في البرمجة">
+                                <i class="fas fa-code"></i>
+                                <span>البرمجة</span>
+                            </button>
+                            <button class="quick-btn" data-message="احكي لي نكتة">
+                                <i class="fas fa-laugh"></i>
+                                <span>نكتة</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="chat-input-container">
+                    <div class="input-wrapper">
+                        <textarea 
+                            id="message-input" 
+                            placeholder="اكتب رسالتك هنا..." 
+                            rows="1"
+                            dir="rtl"
+                        ></textarea>
+                        <button class="send-btn" id="send-btn">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </div>
+                    <div class="input-hints">
+                        <span><i class="fas fa-keyboard"></i> Enter للإرسال</span>
+                        <span><i class="fas fa-arrows-alt-v"></i> Shift+Enter سطر جديد</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- API Tab -->
+            <div class="tab-content" id="api-tab">
+                <div class="api-header">
+                    <h2><i class="fas fa-code"></i> API Documentation</h2>
+                    <p>وثائق API لدمج الشات بوت في تطبيقاتك</p>
+                </div>
+
+                <div class="api-content">
+                    <div class="api-card">
+                        <div class="api-method post">POST</div>
+                        <div class="api-endpoint">/api/chat</div>
+                        <p class="api-desc">إرسال رسالة والحصول على رد من الشات بوت</p>
+                        <div class="api-example">
+                            <h4>Request:</h4>
+                            <pre><code>{
+  "message": "مرحبا",
+  "user_id": "user_123"
+}</code></pre>
+                            <h4>Response:</h4>
+                            <pre><code>{
+  "status": "success",
+  "data": {
+    "response": "أهلاً وسهلاً! 👋",
+    "intent": "greetings",
+    "confidence": 0.95,
+    "timestamp": "2024-01-15T10:30:00"
+  }
+}</code></pre>
+                        </div>
+                    </div>
+
+                    <div class="api-card">
+                        <div class="api-method get">GET</div>
+                        <div class="api-endpoint">/api/health</div>
+                        <p class="api-desc">فحص حالة النظام والخدمة</p>
+                        <div class="api-example">
+                            <h4>Response:</h4>
+                            <pre><code>{
+  "status": "healthy",
+  "service": "NLP AI Arabic Chatbot",
+  "version": "2.0.0",
+  "features": ["Arabic NLP", "Intent Recognition"]
+}</code></pre>
+                        </div>
+                    </div>
+
+                    <div class="api-card">
+                        <div class="api-method get">GET</div>
+                        <div class="api-endpoint">/api/history</div>
+                        <p class="api-desc">الحصول على تاريخ المحادثات</p>
+                    </div>
+
+                    <div class="api-card">
+                        <div class="api-method get">GET</div>
+                        <div class="api-endpoint">/api/stats</div>
+                        <p class="api-desc">إحصائيات النظام والاستخدام</p>
+                    </div>
+
+                    <div class="api-test-section">
+                        <h3><i class="fas fa-flask"></i> اختبار API</h3>
+                        <div class="api-test-form">
+                            <select id="api-method">
+                                <option value="POST">POST</option>
+                                <option value="GET">GET</option>
+                            </select>
+                            <input type="text" id="api-endpoint-input" value="/api/chat" placeholder="Endpoint">
+                            <textarea id="api-body" placeholder='{"message": "مرحبا"}' dir="ltr"></textarea>
+                            <button id="test-api-btn" class="btn-primary">
+                                <i class="fas fa-play"></i> اختبار
+                            </button>
+                        </div>
+                        <div class="api-response" id="api-response">
+                            <pre><code>// النتيجة ستظهر هنا...</code></pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Stats Tab -->
+            <div class="tab-content" id="stats-tab">
+                <div class="stats-header">
+                    <h2><i class="fas fa-chart-bar"></i> إحصائيات النظام</h2>
+                </div>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon"><i class="fas fa-comments"></i></div>
+                        <div class="stat-value" id="total-conversations">0</div>
+                        <div class="stat-label">إجمالي المحادثات</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon"><i class="fas fa-users"></i></div>
+                        <div class="stat-value" id="unique-users">0</div>
+                        <div class="stat-label">المستخدمين الفريدين</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon"><i class="fas fa-brain"></i></div>
+                        <div class="stat-value" id="kb-size">0</div>
+                        <div class="stat-label">قاعدة المعرفة</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon"><i class="fas fa-bolt"></i></div>
+                        <div class="stat-value" id="avg-response">&lt;1s</div>
+                        <div class="stat-label">متوسط الاستجابة</div>
+                    </div>
+                </div>
+                <div class="stats-chart-container">
+                    <h3>توزيع النوايا (Intents)</h3>
+                    <div class="chart-bars" id="intent-chart">
+                        <!-- Chart bars will be inserted here -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- About Tab -->
+            <div class="tab-content" id="about-tab">
+                <div class="about-header">
+                    <div class="about-logo">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <h2>NLP AI Chatbot</h2>
+                    <p class="about-version">الإصدار 2.0.0</p>
+                </div>
+
+                <div class="about-content">
+                    <div class="about-section">
+                        <h3><i class="fas fa-star"></i> المميزات</h3>
+                        <div class="features-grid">
+                            <div class="feature-item">
+                                <i class="fas fa-language"></i>
+                                <h4>فهم اللغة العربية</h4>
+                                <p>معالجة متقدمة للنص العربي مع دعم اللهجات المختلفة</p>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-brain"></i>
+                                <h4>تعرف النوايا</h4>
+                                <p>تحديد دقيق لنية المستخدم باستخدام Regex Patterns</p>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-memory"></i>
+                                <h4>السياق</h4>
+                                <p>حفظ سياق المحادثة لكل مستخدم على حدة</p>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-plug"></i>
+                                <h4>API RESTful</h4>
+                                <p>واجهة برمجة سهلة الدمج مع أي تطبيق</p>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-mobile-alt"></i>
+                                <h4>تصميم متجاوب</h4>
+                                <p>يعمل على جميع الأجهزة والشاشات</p>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-shield-alt"></i>
+                                <h4>آمن وسريع</h4>
+                                <p>أداء عالي مع معالجة سريعة للطلبات</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="about-section">
+                        <h3><i class="fas fa-cogs"></i> التقنيات المستخدمة</h3>
+                        <div class="tech-stack">
+                            <span class="tech-badge"><i class="fab fa-python"></i> Python</span>
+                            <span class="tech-badge"><i class="fas fa-flask"></i> Flask</span>
+                            <span class="tech-badge"><i class="fab fa-js"></i> JavaScript</span>
+                            <span class="tech-badge"><i class="fab fa-html5"></i> HTML5</span>
+                            <span class="tech-badge"><i class="fab fa-css3-alt"></i> CSS3</span>
+                            <span class="tech-badge"><i class="fas fa-brain"></i> NLP</span>
+                        </div>
+                    </div>
+
+                    <div class="about-section">
+                        <h3><i class="fas fa-user-tie"></i> المطور</h3>
+                        <p class="developer-info">
+                            <i class="fas fa-code"></i> تم التطوير بواسطة  <strong>ENG.FAHAD ALAMOUDI</strong><br>
+                            <i class="fas fa-envelope"></i> للتواصل والدعم الفني
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Typing Indicator Template -->
+    <template id="typing-template">
+        <div class="message bot-message typing-message">
+            <div class="message-avatar">
+                <i class="fas fa-robot"></i>
+            </div>
+            <div class="message-content">
+                <div class="typing-indicator">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>
