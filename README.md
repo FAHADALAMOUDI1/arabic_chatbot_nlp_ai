@@ -80,3 +80,17 @@ arabic_chatbot/
 
 MIT License
 
+
+
+<img width="2544" height="1298" alt="3333" src="https://github.com/user-attachments/assets/e16b3031-4474-438f-bdb5-167b2bcb6de0" />
+
+<img width="2533" height="1296" alt="4444" src="https://github.com/user-attachments/assets/2645ce19-f3b4-4bc1-af5a-691eae0914ca" />
+
+<img width="2544" height="1308" alt="5555" src="https://github.com/user-attachments/assets/5c05b174-4b6a-4ab6-b8c5-b4d55dd3c7b7" />
+
+<img width="2544" height="1295" alt="6666" src="https://github.com/user-attachments/assets/404601e3-d837-418f-b7db-5ecba603c93c" />
+
+
+
+
+
